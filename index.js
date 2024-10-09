@@ -1,7 +1,18 @@
 google.charts.load("current", { packages: ["orgchart"] });
 google.charts.setOnLoadCallback(drawChart);
 
-function nodeContent(name, title, image, id, parent) {
+/**
+ * create node content
+ *@param {Object} contentObj
+ *@param {string} contentObj.name
+ *@param {string} contentObj.title
+ *@param {string} contentObj.image
+ *@param {string} contentObj.id
+ *@param {string} contentObj.parent
+ */
+function nodeContent(contentObj) {
+  const { name, title, image, id, parent } = contentObj;
+
   const imageElement = `<div class="node_image_container"> <img src="${image}" alt="${name}"/> </div>`;
 
   const infoElement = `<div class="node_Info"><p class="node_name">${name}</p><p class="node_title">${title}</p></div>`;
@@ -10,14 +21,15 @@ function nodeContent(name, title, image, id, parent) {
 
   return [{ v: id, f: contentElement }, parent, title];
 }
+
 const t = console.log(
-  nodeContent(
-    "Khaled Labeb Ahmed",
-    "Frontend web develeoper",
-    "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png",
-    "Khaled Labeb",
-    "",
-  ),
+  nodeContent({
+    name: "",
+    title: "",
+    image: "",
+    id: "",
+    parent: "",
+  }),
 );
 
 function drawChart() {
@@ -36,41 +48,46 @@ function drawChart() {
       "",
       "The President",
      ],*/
-    nodeContent(
-      "Khaled Labeb Ahmed",
-      "Frontend web develeoper",
-      "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png",
-      "Khaled Labeb1",
-      "",
-    ),
-    nodeContent(
-      "Khaled Labeb Ahmed",
-      "Frontend web develeoper",
-      "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png",
-      "Khaled Labeb2",
-      "Khaled Labeb1",
-    ),
-    nodeContent(
-      "Khaled Labeb Ahmed",
-      "Frontend web develeoper",
-      "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png",
-      "Khaled Labeb3",
-      "Khaled Labeb1",
-    ),
-    nodeContent(
-      "Khaled Labeb Ahmed",
-      "Frontend web develeoper",
-      "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png",
-      "Khaled Labeb4",
-      "Khaled Labeb3",
-    ),
-    nodeContent(
-      "Khaled Labeb Ahmed",
-      "Frontend web develeoper",
-      "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png",
-      "Khaled Labeb5",
-      "Khaled Labeb3",
-    ),
+    nodeContent({
+      name: "Khaled Labeb Ahmed",
+      title: "Frontend web develeoper",
+      image:
+        "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png",
+      id: "Khaled Labeb1",
+      parent: "",
+    }),
+    nodeContent({
+      name: "Khaled Labeb Ahmed",
+      title: "Frontend web develeoper",
+      image:
+        "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png",
+      id: "Khaled Labeb2",
+      parent: "Khaled Labeb1",
+    }),
+    nodeContent({
+      name: "Khaled Labeb Ahmed",
+      title: "Frontend web develeoper",
+      image:
+        "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png",
+      id: "Khaled Labeb3",
+      parent: "Khaled Labeb1",
+    }),
+    nodeContent({
+      name: "Khaled Labeb Ahmed",
+      title: "Frontend web develeoper",
+      image:
+        "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png",
+      id: "Khaled Labeb4",
+      parent: "Khaled Labeb3",
+    }),
+    nodeContent({
+      name: "Khaled Labeb Ahmed",
+      title: "Frontend web develeoper",
+      image:
+        "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png",
+      id: "Khaled Labeb5",
+      parent: "Khaled Labeb3",
+    }),
   ]);
 
   // Create the chart.
